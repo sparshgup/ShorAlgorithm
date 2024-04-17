@@ -1,51 +1,30 @@
-import kotlin.math.*
+/* The output consists of any two factors out of all the possible factors of N.
+ * These might differ with every run based on our choice of coprime integer x, and
+ * because Shor's algorithm has a probabilistic model in this classical implementation.
+ *
+ * Conditions for the algorithm to work:
+ *      - N should not be a prime number
+ *      - N should not be an even number
+ *      - N and x should not be of form N^x
+ *      - N and x should be coprime integers (i.e. only common factor should be 1)
+ *      - N^2 <= 2^t <= 2N^2
+ */
 
 fun main() {
-    val x = 2   // coprime integer 1
-    val N = 21  // coprime integer 2
+    println("=============================================")
+    println("Example 1: Factoring 21")
+    val shorAlgorithm1 = ShorAlgorithm(x = 2, N = 21, t = 9)
+    shorAlgorithm1.runShorAlgorithm()
 
-    val t = 9   // number of qubits for argument register
-    val n = log2(N.toDouble()).toInt() // Number of qubits for function register
+    println("=============================================")
+    println("Example 2: Factoring 15")
+    val shorAlgorithm2 = ShorAlgorithm(x = 2, N = 15, t = 8)
+    shorAlgorithm2.runShorAlgorithm()
 
-    // T = 2^t such that N^2 <= T <= 2N^2
-    val T = 2.0.pow(t).toInt()
+    println("=============================================")
+    println("Example 3: Factoring 33")
+    val shorAlgorithm3 = ShorAlgorithm(x = 2, N = 33, t = 12)
+    shorAlgorithm3.runShorAlgorithm()
 
-    // Initialize registers
-    val argumentRegister = Array(T) { 0.0 }
-    val functionRegister = Array(T) { 0.0 }
-
-    // apply a Hadamard gate on each of the qubits in the argument register
-    for (a in 0 until T) {
-        argumentRegister[a] = a.toDouble()
-    }
-
-    // implement the modular exponentiation function on the function register
-    for (a in 0 until T) {
-        functionRegister[a] = x.toDouble().pow(a) % N
-    }
-
-    // Measure the function register
-
-    // Perform a quantum Fourier transform on the argument register
-
-    // Measure the argument register
-
-    // Find the period for obtaining the result
-}
-
-
-fun quantumFourierTransform(input: Array<Double>) {
-
-}
-
-fun measureFunctionRegister(input: Array<Double>) {
-
-}
-
-fun measureArgumentRegister(input: Array<Double>) {
-
-}
-
-fun findPeriod(T: Int, j: Int) {
-
+    println("=============================================")
 }
