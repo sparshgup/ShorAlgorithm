@@ -11,7 +11,6 @@ import kotlin.math.*
  * Conditions for the algorithm to work:
  *      - N should not be a prime number
  *      - N should not be an even number
- *      - N and x should not be of form N^x
  *      - N and x should be coprime integers (i.e. only common factor should be 1)
  *      - N^2 <= 2^t <= 2N^2
  *
