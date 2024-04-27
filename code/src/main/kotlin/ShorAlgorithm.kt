@@ -54,9 +54,9 @@ class ShorAlgorithm(private val x: Int, private val N: Int, t: Int) {
      */
     fun runShorAlgorithm() {
         val measuredFunctionValue = measureFunctionRegister()
-        val (patternNum, patternNumOffset) = preprocessDataForQFT(measuredFunctionValue)
-        val (extractedValues, a) = calculateQFTInputValues(patternNum, patternNumOffset)
-        val period = calculatePeriod(extractedValues, a, patternNum)
+        val (periodNum, periodNumOffset) = preprocessDataForQFT(measuredFunctionValue)
+        val (extractedValues, a) = calculateQFTInputValues(periodNum, periodNumOffset)
+        val period = calculatePeriod(extractedValues, a, periodNum)
         val factors = findFactors(period)
         println("Some factors of $N are: $factors")
     }
